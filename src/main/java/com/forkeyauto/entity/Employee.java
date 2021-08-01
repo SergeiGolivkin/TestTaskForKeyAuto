@@ -26,5 +26,8 @@ public class Employee {
 
     @Column
     private String password;
+
+    @Column
+    private boolean blocked;
 }
 

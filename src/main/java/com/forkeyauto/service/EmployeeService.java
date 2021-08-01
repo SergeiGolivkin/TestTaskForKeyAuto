@@ -25,9 +25,9 @@ public class EmployeeService {
         if (employeeRequestDto.getType() == 1 && employeeRequestDto.getId() == null)
         { createEmployee(employee);}
         else if (employeeRequestDto.getType() == 2 && employeeRequestDto.getId() != null)
-        {updateEmployee(employee);}
-        else if (employeeRequestDto.getType() == 3 && employeeRequestDto.getId() != null)
         {dismissalEmployee(employee);}
+        else if (employeeRequestDto.getType() == 3 && employeeRequestDto.getId() != null)
+        {updateEmployee(employee);}
         return modelMapper.map(employee, EmployeeResponseDto.class);
     }
 
@@ -48,9 +48,10 @@ public class EmployeeService {
     }
 
     public void dismissalEmployee(Employee employee) throws EmployeeNotFoundException {
-         Employee delEmployee = employeeRepository.findById(employee.getId())
+          Employee delEmployee = employeeRepository.findById(employee.getId())
                 .orElseThrow(() -> new EmployeeNotFoundException("Сотрудник с ID: " + employee.getId() + " не найден!"));
          employee.setPassword(delEmployee.getPassword());
+        employee.setBlocked(true);
         employeeRepository.delete(delEmployee);
     }
 }
