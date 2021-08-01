@@ -1,9 +1,7 @@
 
 package com.forkeyauto.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 
 import javax.persistence.*;
 
@@ -16,8 +14,6 @@ public class Employee {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private int type;
 
     @Column
     private String role;

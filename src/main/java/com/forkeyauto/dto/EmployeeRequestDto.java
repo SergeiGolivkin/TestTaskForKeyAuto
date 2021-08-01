@@ -1,16 +1,13 @@
 package com.forkeyauto.dto;
 
-
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
-public class EmployeeDto {
+public class EmployeeRequestDto {
 
     private Long id;
+    private int type;
+    private String role;
     private String fio;
     private String post;
-    private String password;
-
 }
